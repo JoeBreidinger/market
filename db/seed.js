@@ -49,3 +49,7 @@ async function seed() {
     await createOrderProduct(order.id, i, i);
   }
 }
+
+// Now that the db is seeded, we can set up the routing logic in our api folder
+// This will allow this express app to listen for and handle requests from the client
+// then also being able to send the response from the server back to the client
