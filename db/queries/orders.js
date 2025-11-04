@@ -11,6 +11,7 @@ export async function createOrder(userId, date, note) {
         (user_id, date, note)
     VALUES
         ($1, $2, $3)
+    RETURNING *
     `;
   // First part of the function is always the SQL query in template literal format
   // Second part is then creating the object (in this case the order) so we can act upon it in regard to the database
