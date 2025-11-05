@@ -29,23 +29,23 @@ router.get("/", async (req, res) => {
   res.send(orders);
 });
 
-router.param("id", async (req, res) => {
+router.param("id", async (req, res, next, id) => {
   const order = await getOrderById(id);
   if (!order) return res.status(404).send("Order not found");
 
   if (order.user_id !== req.user.id)
-    return res.status(403).send("This is not your order");
+    return res.status(403).send("This is not your order.");
 
   req.order = order;
   next();
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
   res.send(req.order);
 });
 
 router.post(
-  ":id/products",
+  "/:id/products",
   requireBody(["productId", "quantity"]),
   async (req, res) => {
     const { productId, quantity } = req.body;

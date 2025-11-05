@@ -21,7 +21,7 @@ router.param("id", async (req, res, next, id) => {
   next();
 });
 
-router.get("/id", (req, res) => {
+router.get("/:id", (req, res) => {
   res.send(req.product);
 });
 

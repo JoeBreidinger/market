@@ -28,11 +28,11 @@ CREATE TABLE products (
 
 
 -- Note Primary Key
-CREATE TABLE orders_products(
-    order_id int NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
-    product_id int NOT NULL REFERENCES products(id) ON DELETE CASCADE,
-    quantity int NOT NULL,
-        PRIMARY KEY (order_id, product_id)
+CREATE TABLE orders_products (
+	order_id int NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+	product_id int NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+  quantity int NOT NULL,
+	PRIMARY KEY (order_id, product_id)
 );
 
 -- Once SQL is written, create the db. Then you can run npm db:schema to set up tables within that db
