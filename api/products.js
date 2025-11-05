@@ -21,10 +21,11 @@ router.param("id", async (req, res, next, id) => {
   next();
 });
 
-router.get("/id", (req, res) => {
+router.get("/:id", (req, res) => {
   res.send(req.product);
 });
 
+// This route requires a registered account
 router.get("/:id/orders", requireUser, async (req, res) => {
   const orders = await getOrderByUserIdAndProductId(
     req.user.id,

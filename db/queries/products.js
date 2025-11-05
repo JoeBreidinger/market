@@ -40,7 +40,7 @@ export async function getProductsByOrderId(orderId) {
         products.*
     FROM
         products
-        JOIN order_products ON products.id = orders_products.products_id
+        JOIN orders_products ON products.id = orders_products.product_id
     WHERE
         orders_products.order_id = $1`;
   const { rows: products } = await db.query(SQL, [orderId]);
